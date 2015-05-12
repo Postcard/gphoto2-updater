@@ -3,7 +3,7 @@
 # Gphoto2 2.5.7 compiler and installer script v0.4.1
 #
 # This script is specifically created for Raspbian http://www.raspbian.org
-# and Raspberry Pi http://www.raspberrypi.org but should work over any 
+# and Raspberry Pi http://www.raspberrypi.org but should work over any
 # Debian-based distribution
 
 # Created and mantained by Gonzalo Cao Cabeza de Vaca
@@ -33,7 +33,7 @@ if [ "$(whoami)" != "root" ]; then
 	exit 1
 fi
 
-echo 
+echo
 echo "----------------"
 echo "Updating sources"
 echo "----------------"
@@ -41,7 +41,7 @@ echo
 
 apt-get update
 
-echo 
+echo
 echo "--------------------------"
 echo "Removing gphoto2 if exists"
 echo "--------------------------"
@@ -49,7 +49,7 @@ echo
 
 apt-get remove -y gphoto2
 
-echo 
+echo
 echo "-----------------------"
 echo "Installing dependencies"
 echo "-----------------------"
@@ -57,7 +57,7 @@ echo
 
 apt-get install -y libltdl-dev libusb-dev libexif-dev libpopt-dev libudev-dev
 
-echo 
+echo
 echo "-------------------------"
 echo "Creating temporary folder"
 echo "-------------------------"
@@ -69,13 +69,13 @@ cd gphoto2-temp-folder
 echo "gphoto2-temp-folder created"
 
 
-echo 
+echo
 echo "-------------------------"
 echo "Downloading libusb 1.0.17"
 echo "-------------------------"
 echo
 
-if wget -q https://download.nus.edu.sg/mirror/ubuntu/pool/main/libu/libusbx/libusbx_1.0.17.orig.tar.bz2
+if wget -q --no-check-certificate https://download.nus.edu.sg/mirror/ubuntu/pool/main/libu/libusbx/libusbx_1.0.17.orig.tar.bz2
 	then
 		tar xjvf libusbx_1.0.17.orig.tar.bz2
 		cd libusbx-1.0.17/
@@ -85,7 +85,7 @@ if wget -q https://download.nus.edu.sg/mirror/ubuntu/pool/main/libu/libusbx/libu
 		exit 1
 fi
 
-echo 
+echo
 echo "--------------------------------------"
 echo "Compiling and installing libusb 1.0.17"
 echo "--------------------------------------"
@@ -96,7 +96,7 @@ make install
 cd ..
 
 
-echo 
+echo
 echo "----------------------------"
 echo "Downloading libgphoto2 2.5.7"
 echo "----------------------------"
@@ -113,7 +113,7 @@ if wget -q http://downloads.sourceforge.net/project/gphoto/libgphoto/2.5.7/libgp
 fi
 
 
-echo 
+echo
 echo "-----------------------------------------"
 echo "Compiling and installing libgphoto2 2.5.7"
 echo "-----------------------------------------"
@@ -124,7 +124,7 @@ make
 make install
 cd ..
 
-echo 
+echo
 echo "-------------------------"
 echo "Downloading gphoto2 2.5.6"
 echo "-------------------------"
@@ -141,10 +141,10 @@ if wget -q http://downloads.sourceforge.net/project/gphoto/gphoto/2.5.6/gphoto2-
 fi
 
 
-echo 
+echo
 echo "--------------------------------"
 echo "Compiling and installing gphoto2"
-echo "--------------------------------" 
+echo "--------------------------------"
 echo
 
 ./configure
@@ -152,10 +152,10 @@ make
 make install
 cd ..
 
-echo 
+echo
 echo "-----------------"
 echo "Linking libraries"
-echo "-----------------"  
+echo "-----------------"
 echo
 
 ldconfig
@@ -194,7 +194,7 @@ then
 fi
 
 
-echo 
+echo
 echo "-------------------"
 echo "Removing temp files"
 echo "-------------------"
@@ -205,11 +205,10 @@ rm -r gphoto2-temp-folder
 
 
 
-echo 
+echo
 echo "--------------------"
 echo "Finished!! Enjoy it!"
 echo "--------------------"
 echo
 
 gphoto2 --version
-
